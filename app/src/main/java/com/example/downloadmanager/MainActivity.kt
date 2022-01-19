@@ -41,10 +41,10 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private  fun donwloadFile(url: String){
-        val request = DownloadManager.Request(Uri.parse(url))
-            .setTitle("File")
-            .setDescription("Downloading...")
+    private  fun donwloadFile(files: Files){
+        val request = DownloadManager.Request(Uri.parse(files.link))
+            .setTitle("File-" + files.filename )
+            .setDescription(files.description)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setAllowedOverMetered(true)
         val dm = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
         val adapter = FileAdapter(files,R.layout.list_files, this)
 
         adapter.setOnItemClickListener(object: FileAdapter.OnItemClickListener{
-            override fun onItemClick(v: String, position: Int) {
+            override fun onItemClick(files: Files, position: Int) {
                 Toast.makeText(this@MainActivity, "Descargando Archivo", Toast.LENGTH_SHORT).show()
-                donwloadFile(v)
+                donwloadFile(files)
             }
         })
 

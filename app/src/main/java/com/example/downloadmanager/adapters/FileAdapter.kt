@@ -43,12 +43,12 @@ class FileAdapter(val file: List<Files>, val layout: Int, val contex: Context):
             fileDate.setText(file.date)
 
             itemView.setOnClickListener {
-                listener.onItemClick(file.link, adapterPosition)
+                listener.onItemClick(file, adapterPosition)
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(v: String, position: Int)
+        fun onItemClick(file: Files, position: Int)
     }
 }
