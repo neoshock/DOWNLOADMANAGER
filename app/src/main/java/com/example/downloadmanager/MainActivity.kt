@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object: FileAdapter.OnItemClickListener{
             override fun onItemClick(v: String, position: Int) {
+                Toast.makeText(this@MainActivity, "Descargando Archivo", Toast.LENGTH_SHORT).show()
                 donwloadFile(v)
             }
         })
